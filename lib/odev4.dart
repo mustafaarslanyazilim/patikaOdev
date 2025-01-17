@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_application_2/odev5.dart';
 
 List<String> list = <String>["Erkek", "Kadın"];
 
@@ -16,9 +17,9 @@ class _Odev4State extends State<Odev4> {
   TextEditingController txt = TextEditingController();
   bool isaretliMi = false;
   bool checkliMi = false;
-  int sliderdeger = 1;
+  int sliderdeger = 0;
   String? cinsiyet;
-
+/*
   void _showValueDialog(String textFieldValue, int sliderValue) {
     // Dialog'ı gösterme
     showDialog(
@@ -41,7 +42,7 @@ class _Odev4State extends State<Odev4> {
       },
     );
   }
-
+*/
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -160,7 +161,7 @@ class _Odev4State extends State<Odev4> {
                       ),
                       Slider(
                         value: sliderdeger.toDouble(),
-                        min: 1,
+                        min: 0,
                         max: 20,
                         divisions: 19,
                         label: sliderdeger.toString(),
@@ -179,9 +180,17 @@ class _Odev4State extends State<Odev4> {
                 OutlinedButton(
                   onPressed: () {
                     setState(() {
+                      Route bilgiGonder = MaterialPageRoute(builder: (context) {
+                        return Odev5(
+                            adSoyad: txt.text,
+                            cinsiyet: cinsiyet.toString(),
+                            resitMi: isaretliMi,
+                            icilenSigara: sliderdeger.toString());
+                      });
+                      Navigator.push(context, bilgiGonder);
                       // Butona tıklandığında değerleri al
-                      String textFieldValue = txt.text;
-                      _showValueDialog(textFieldValue, sliderdeger);
+                      //String textFieldValue = txt.text;
+                      //_showValueDialog(textFieldValue, sliderdeger);
                     });
                   },
                   child: Text(
@@ -202,5 +211,3 @@ class _Odev4State extends State<Odev4> {
     );
   }
 }
-
-

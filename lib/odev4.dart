@@ -2,7 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_application_2/odev5.dart';
+
+import 'odev5.dart';
 
 List<String> list = <String>["Erkek", "Kadın"];
 
